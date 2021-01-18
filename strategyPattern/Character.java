@@ -1,7 +1,7 @@
-abstract public class Character {
+public abstract class Character {
     WeaponBehavior weapon;
 
-    abstract public void display();
+    public abstract void display();
 
     public void fight() {
         weapon.useWeapon();
