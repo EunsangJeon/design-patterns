@@ -1,17 +1,17 @@
 public class TV {
     private ChannelFrequencies currentChannelFrequency;
+    private ChannelIterator ci;
 
     public TV(ChannelFrequencies cf) {
         currentChannelFrequency = cf;
+        ci = currentChannelFrequency.createIterator();
     }
 
     public void chUp(){
-        ChannelIterator ci = currentChannelFrequency.createIterator();
         ci.next();
     }
 
     public void chDown() {
-        ChannelIterator ci = currentChannelFrequency.createIterator();
         ci.prev();
     }
 
@@ -20,6 +20,13 @@ public class TV {
     }
 
     public Channel getCurrentChannel() {
-        return currentChannelFrequency.getCurrentChannel();
+        return ci.getCurrentChannel();
     }
+
+    void addChannel(Channel ch) {
+        currentChannelFrequency.addChannel(ch);
+    };
+    void removeChannel(Channel ch) {
+        currentChannelFrequency.removeChannel(ch);
+    };
 }
